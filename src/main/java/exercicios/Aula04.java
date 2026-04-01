@@ -47,30 +47,50 @@ public class Aula04 extends Aula {
         new Aula04();
     }
 
+ 
     protected double maiorNotaCursoAndSexo(@NonNull final Stream<Estudante> stream, @NonNull final Curso curso, final char sexo) {
-        // TODO: Você precisa implementar este método. Apague estas linhas e escreva o código correto.
-        return -1;
+        double maiorNota = stream
+                .filter(e -> e.getSexo() == sexo && e.getCurso().equals(curso))
+                .mapToDouble(e -> e.getNota())
+                .max()
+                .orElse(0);
+        return maiorNota;
     }
 
     protected long totalEstudantesCursoAndSexo(@NonNull final Stream<Estudante> stream, @NonNull final Curso curso, final char sexo) {
-        // TODO: Você precisa implementar este método. Apague estas linhas e escreva o código correto.
-        return -1;
+       long totalEstudantes = stream
+               .filter(e -> e.getCurso().equals(curso) && e.getSexo() == sexo)
+               .count();
+
+        return totalEstudantes;
     }
 
     protected double mediaNotaTodosEstudantesCurso(@NonNull final Stream<Estudante> stream, @NonNull final Curso curso){
-        // TODO: Você precisa implementar este método. Apague estas linhas e escreva o código correto.
-        return -1;
+        double mediaNota = stream
+                .filter(e -> e.getCurso().equals(curso))
+                .mapToDouble(e -> e.getNota())
+                .average()
+                .orElse(0);
+
+        return mediaNota;
     }
 
     protected double maiorNotaTodosEstudantes(@NonNull final Stream<Estudante> stream){
-        // TODO: Você precisa implementar este método. Apague estas linhas e escreva o código correto.
-        return -1;
+        double maiorNota = stream
+                .mapToDouble(e -> e.getNota())
+                .max()
+                .orElse(0);
+        return maiorNota;
     }
 
 
     protected double maiorNotaHomens(@NonNull final Stream<Estudante> stream){
-        // TODO: Você precisa implementar este método. Apague estas linhas e escreva o código correto.
-        return -1;
+        double maiorNota = stream
+                .filter(e -> e.getSexo() == 'M')
+                .mapToDouble(e -> e.getNota())
+                .max()
+                .orElse(0);
+        return maiorNota;
     }
 }
 
